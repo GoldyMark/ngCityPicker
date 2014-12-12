@@ -1,4 +1,4 @@
-angularcitypicker.github.io
+angularCityPicker
 ===========================
 
 angularCityPicker
