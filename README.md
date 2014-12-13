@@ -5,8 +5,9 @@ angularCityPicker
 类似电商网站的城市选择，基于angularJS框架构建。
 备注：
 1、本人非专业前端，尤其是对CSS感到痛苦，所以该插件可能不是很成熟；
-2、本插件受https://github.com/cipchk/angular-city-select启发，本着学习AngularJS而写的；
+2、本插件受https://github.com/cipchk/angular-city-select 启发，本着学习AngularJS而写的；
 3、ng-model和q的设计比较混乱，如果有大牛能指点一下那就感激不尽；
+4、http://www.jq22.com/jquery-info632 ，找到的另外一个类似插件供参考选择；
 
 PS：等有空了解Markdown语法再写好这个README
 
