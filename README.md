@@ -34,8 +34,8 @@ angular.module('myApp', ['angularCityPicker'])
     $scope.data = {
         model:"sssWWW",
         open:false,
-        // q:"440605",
-        q:["广东","佛山","南海"]
+        // q:"440106",
+        q:["广东","广州","天河"]
     }
 }]);
 
