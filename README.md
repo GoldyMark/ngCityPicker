@@ -1,74 +1,92 @@
-angularCityPicker
-===========================
+#ngCityPicker
 
-angularCityPicker
-类似电商网站的城市选择，基于angularJS框架构建。
-备注：
-1、本人非专业前端，尤其是对CSS感到痛苦，所以该插件可能不是很成熟；
-2、本插件受https://github.com/cipchk/angular-city-select 启发，本着学习AngularJS而写的；
-3、ng-model和q的设计比较混乱，如果有大牛能指点一下那就感激不尽；
-4、http://www.jq22.com/jquery-info632 ，找到的另外一个类似插件供参考选择；
+类似电商网站的城市选择器，基于AngularJS框架构建。
 
-PS：等有空了解Markdown语法再写好这个README
+## 说明：
+1. 本插件受https://github.com/cipchk/angular-city-select 启发，本着学习AngularJS而写；
+2. ng-model和q的设计比较混乱，如果有大牛能指点一下那就感激不尽；
+3. http://www.jq22.com/jquery-info632 ，找到的另外一个类似插件供参考选择；
 
-TODO：
-Add less
+## Demo:
 
-Dependencies：
-Angularjs(开发时使用1.2.16版本，没有做兼容性测试，其他版本应该没问题)
+## 最新版本:
+0.1
 
-Usage:
+## 许可证:
+Apache License 2.0
 
-Add dependencies:
-CSS:
-<link rel="stylesheet" href="../lib/angularCityPicker.min.css">
+## 依赖库:
+只有Angularjs！(开发时使用1.2.16版本，没有做兼容性测试，其他版本应该没问题)
 
-JS:
-<script src="../lib/angular.js"></script>
-<script src="../lib/angularCityPicker.min.js"></script>
+## 安装:
+引入ngCityPicker的css和js文件：
 
-HTML:
-<mk-city-picker open="data.open" ng-model="data.model" q="data.q" placeholder="请选择城市" format="$0-$1-$2">
+**JS:**
+```html
+<script src="../dist/angular.js"></script>
+<script src="../dist/ngCityPicker.min.js"></script>
+```
+**CSS:**
+```css
+<link rel="stylesheet" href="../lib/ngCityPicker.min.css">
+```
+
+## 使用:
+1、 引入ngCityPicker模块：
+```javascript
+angular.module('myApp', ['ngCityPicker'])
+```
+
+2、 使用mk-city-picker指令：
+```html
+<mk-city-picker open="params.open" placeholder="请选择城市" format="$0-$1-$2" ng-model="params.outputModel" q="params.inputModel">
 </mk-city-picker>
+```
 
-Controller:
-angular.module('myApp', ['angularCityPicker'])
+3、 Controller代码:
+```javascript
+angular.module('myApp', ['ngCityPicker'])
 .('myController', ['$scope', function($scope){
-    $scope.data = {
-        model:"sssWWW",
+    $scope.params = {
+        outputModel:null,
         open:false,
-        // q:"440106",
-        q:["广东","广州","天河"]
+        // inputModel:"440106",
+        inputModel:['广东','广州','天河']
     }
 }]);
+```
 
-Detail:
-除了ng-model，其余选项均为可选；
-placeholder和format是string，其余均是expression；
+## 参数：
+### [可选][类型:boolean] open:
+####说明：控制ngCityPicker下拉框的打开或关闭；
+<br/>
 
-open:
-type:boolean,
-控制下拉框打开与否
+### [可选][类型:string] placeholder:
+####说明：默认显示的提示信息；
+<br/>
 
-ng-model:
-type:object,
+### [可选][类型:string] format:
+####说明：格式化选中的城市，$0是省份，$1是城市，$2是县区；
+####示例：
+```html
+<mk-city-picker format='$0省-$1市-$2县'></mk-city-picker>
+```
+<br/>
+
+### [可选][类型:**array of string** | **string**] q:
+#### 说明：传入要选择的城市数据；
+传入数据格式示例（支持数组和字符串）：
+**array**:['广东','广州','天河']——按[省份名称,城市名称,县区名称]的格式传入；
+**string**:"44"，或"4401"，或"440106"——可传入省份、城市或县区对应的代码；
+<br/>
+
+### [必须][类型:object] ng-model:
+####说明：返回选择的城市；
 返回数据格式示例：
+```json
 {
     "province":["44","粤","广东"],
     "city":["4401","广州"],
     "district":["440106","天河"]
 }
-
-q:
-type:array or string
-传入要选择的城市数据，传入的q值会影响ng-model的生成值；
-传入的数据格式示例：
-string:"44"，或"4401"，或"440106"——可传入省份、城市或县区对应的代码；
-array:['广东','广州','天河']——按[省份名称,城市名称,县区名称]的格式传入；
-
-placeholder:
-type:string
-城市没选择时显示的提示信息；
-
-format:
-城市显示格式，$0是省份，$1是城市，$2是县区
+```
