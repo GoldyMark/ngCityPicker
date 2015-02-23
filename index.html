@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="ngCitypicker : ngCityPicker">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>ngCitypicker</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/GoldyMark/angularCityPicker">View on GitHub</a>
+
+          <h1 id="project_title">ngCitypicker</h1>
+          <h2 id="project_tagline">ngCityPicker</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/GoldyMark/angularCityPicker/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/GoldyMark/angularCityPicker/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="ngcitypicker" class="anchor" href="#ngcitypicker" aria-hidden="true"><span class="octicon octicon-link"></span></a>ngCityPicker</h1>
+
+<p>类似电商网站的城市选择器，基于AngularJS框架构建。</p>
+
+<h2>
+<a id="说明" class="anchor" href="#%E8%AF%B4%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>说明：</h2>
+
+<ol>
+<li>本插件受<a href="https://github.com/cipchk/angular-city-select">https://github.com/cipchk/angular-city-select</a> 启发，本着学习AngularJS而写；</li>
+<li>ng-model和q的设计比较混乱，如果有大牛能指点一下那就感激不尽；</li>
+<li>
+<a href="http://www.jq22.com/jquery-info632">http://www.jq22.com/jquery-info632</a> ，找到的另外一个类似插件供参考选择；</li>
+</ol>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo:</h2>
+
+<h2>
+<a id="最新版本" class="anchor" href="#%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC" aria-hidden="true"><span class="octicon octicon-link"></span></a>最新版本:</h2>
+
+<p>0.1</p>
+
+<h2>
+<a id="许可证" class="anchor" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>许可证:</h2>
+
+<p>Apache License 2.0</p>
+
+<h2>
+<a id="依赖库" class="anchor" href="#%E4%BE%9D%E8%B5%96%E5%BA%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>依赖库:</h2>
+
+<p>只有Angularjs!(开发时使用1.2.16版本，没有做兼容性测试，其他版本应该没问题)</p>
+
+<h2>
+<a id="安装" class="anchor" href="#%E5%AE%89%E8%A3%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装:</h2>
+
+<p>引入ngCityPicker的css和js文件：</p>
+
+<p><strong>JS:</strong></p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>../lib/angular.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>../lib/ngCityPicker.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p><strong>CSS:</strong></p>
+
+<div class="highlight highlight-css"><pre>&lt;<span class="pl-ent">link</span> rel="stylesheet" href="../lib/ngCityPicker<span class="pl-e">.min.css</span>"&gt;</pre></div>
+
+<h2>
+<a id="使用" class="anchor" href="#%E4%BD%BF%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用:</h2>
+
+<p>1、 引入ngCityPicker模块：</p>
+
+<div class="highlight highlight-javascript"><pre>angular.module(<span class="pl-s1"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>, [<span class="pl-s1"><span class="pl-pds">'</span>ngCityPicker<span class="pl-pds">'</span></span>])</pre></div>
+
+<p>2、 使用mk-city-picker指令：</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">mk</span><span class="pl-e">-city-picker</span> <span class="pl-e">open</span>=<span class="pl-s1"><span class="pl-pds">"</span>params.open<span class="pl-pds">"</span></span> <span class="pl-e">placeholder</span>=<span class="pl-s1"><span class="pl-pds">"</span>请选择城市<span class="pl-pds">"</span></span> <span class="pl-e">format</span>=<span class="pl-s1"><span class="pl-pds">"</span>$0-$1-$2<span class="pl-pds">"</span></span> <span class="pl-e">ng-model</span>=<span class="pl-s1"><span class="pl-pds">"</span>params.outputModel<span class="pl-pds">"</span></span> <span class="pl-e">q</span>=<span class="pl-s1"><span class="pl-pds">"</span>params.inputModel<span class="pl-pds">"</span></span>&gt;
+&lt;/<span class="pl-ent">mk</span><span class="pl-e">-city-picker</span>&gt;</pre></div>
+
+<p>3、 Controller代码:</p>
+
+<div class="highlight highlight-javascript"><pre>angular.module(<span class="pl-s1"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>, [<span class="pl-s1"><span class="pl-pds">'</span>ngCityPicker<span class="pl-pds">'</span></span>])
+.(<span class="pl-s1"><span class="pl-pds">'</span>myController<span class="pl-pds">'</span></span>, [<span class="pl-s1"><span class="pl-pds">'</span>$scope<span class="pl-pds">'</span></span>, <span class="pl-st">function</span>(<span class="pl-vpf">$scope</span>){
+    $scope.params <span class="pl-k">=</span> {
+        outputModel<span class="pl-k">:</span><span class="pl-c1">null</span>,
+        open<span class="pl-k">:</span><span class="pl-c1">false</span>,
+        <span class="pl-c">// inputModel:"440106",</span>
+        inputModel<span class="pl-k">:</span>[<span class="pl-s1"><span class="pl-pds">'</span>广东<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>天河<span class="pl-pds">'</span></span>]
+    }
+}]);</pre></div>
+
+<h2>
+<a id="参数" class="anchor" href="#%E5%8F%82%E6%95%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>参数：</h2>
+
+<h3>
+<a id="可选类型boolean-open" class="anchor" href="#%E5%8F%AF%E9%80%89%E7%B1%BB%E5%9E%8Bboolean-open" aria-hidden="true"><span class="octicon octicon-link"></span></a>[可选][类型:boolean] open:</h3>
+
+<h4>
+<a id="说明控制ngcitypicker下拉框的打开或关闭" class="anchor" href="#%E8%AF%B4%E6%98%8E%E6%8E%A7%E5%88%B6ngcitypicker%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84%E6%89%93%E5%BC%80%E6%88%96%E5%85%B3%E9%97%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>说明：控制ngCityPicker下拉框的打开或关闭；</h4>
+
+<p><br></p>
+
+<h3>
+<a id="可选类型string-placeholder" class="anchor" href="#%E5%8F%AF%E9%80%89%E7%B1%BB%E5%9E%8Bstring-placeholder" aria-hidden="true"><span class="octicon octicon-link"></span></a>[可选][类型:string] placeholder:</h3>
+
+<h4>
+<a id="说明默认显示的提示信息" class="anchor" href="#%E8%AF%B4%E6%98%8E%E9%BB%98%E8%AE%A4%E6%98%BE%E7%A4%BA%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>说明：默认显示的提示信息；</h4>
+
+<p><br></p>
+
+<h3>
+<a id="可选类型string-format" class="anchor" href="#%E5%8F%AF%E9%80%89%E7%B1%BB%E5%9E%8Bstring-format" aria-hidden="true"><span class="octicon octicon-link"></span></a>[可选][类型:string] format:</h3>
+
+<h4>
+<a id="说明格式化选中的城市0是省份1是城市2是县区" class="anchor" href="#%E8%AF%B4%E6%98%8E%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%80%89%E4%B8%AD%E7%9A%84%E5%9F%8E%E5%B8%820%E6%98%AF%E7%9C%81%E4%BB%BD1%E6%98%AF%E5%9F%8E%E5%B8%822%E6%98%AF%E5%8E%BF%E5%8C%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>说明：格式化选中的城市，$0是省份，$1是城市，$2是县区；</h4>
+
+<h4>
+<a id="示例" class="anchor" href="#%E7%A4%BA%E4%BE%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>示例：</h4>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">mk</span><span class="pl-e">-city-picker</span> <span class="pl-e">format</span>=<span class="pl-s1"><span class="pl-pds">'</span>$0省-$1市-$2县<span class="pl-pds">'</span></span>&gt;&lt;/<span class="pl-ent">mk</span><span class="pl-e">-city-picker</span>&gt;</pre></div>
+
+<p><br></p>
+
+<h3>
+<a id="可选类型array-of-string--string-q" class="anchor" href="#%E5%8F%AF%E9%80%89%E7%B1%BB%E5%9E%8Barray-of-string--string-q" aria-hidden="true"><span class="octicon octicon-link"></span></a>[可选][类型:array of string | string] q:</h3>
+
+<h4>
+<a id="说明传入要选择的城市数据" class="anchor" href="#%E8%AF%B4%E6%98%8E%E4%BC%A0%E5%85%A5%E8%A6%81%E9%80%89%E6%8B%A9%E7%9A%84%E5%9F%8E%E5%B8%82%E6%95%B0%E6%8D%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>说明：传入要选择的城市数据；</h4>
+
+<p>传入数据格式示例（支持数组和字符串）：
+<strong>array</strong>:['广东','广州','天河']——按[省份名称,城市名称,县区名称]的格式传入；
+<strong>string</strong>:"44"，或"4401"，或"440106"——可传入省份、城市或县区对应的代码；
+<br></p>
+
+<h3>
+<a id="必须类型object-ng-model" class="anchor" href="#%E5%BF%85%E9%A1%BB%E7%B1%BB%E5%9E%8Bobject-ng-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>[必须][类型:object] ng-model:</h3>
+
+<h4>
+<a id="说明返回选择的城市" class="anchor" href="#%E8%AF%B4%E6%98%8E%E8%BF%94%E5%9B%9E%E9%80%89%E6%8B%A9%E7%9A%84%E5%9F%8E%E5%B8%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>说明：返回选择的城市；</h4>
+
+<p>返回数据格式示例：</p>
+
+<div class="highlight highlight-json"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>province<span class="pl-pds">"</span></span>:[<span class="pl-s1"><span class="pl-pds">"</span>44<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>粤<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>广东<span class="pl-pds">"</span></span>],
+    <span class="pl-s1"><span class="pl-pds">"</span>city<span class="pl-pds">"</span></span>:[<span class="pl-s1"><span class="pl-pds">"</span>4401<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>广州<span class="pl-pds">"</span></span>],
+    <span class="pl-s1"><span class="pl-pds">"</span>district<span class="pl-pds">"</span></span>:[<span class="pl-s1"><span class="pl-pds">"</span>440106<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>天河<span class="pl-pds">"</span></span>]
+}</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">ngCitypicker maintained by <a href="https://github.com/GoldyMark">GoldyMark</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
