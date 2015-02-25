@@ -8,6 +8,7 @@
 3. http://www.jq22.com/jquery-info632 ，找到的另外一个类似插件供参考选择；
 
 ## Demo:
+http://goldymark.github.io/ngCityPicker/
 
 ## 许可证:
 Apache License 2.0
