@@ -1,5 +1,6 @@
 .cp-main.opened{
     box-shadow: 1px 1px 2px #888;
+    position: relative;
 }
 
 .cp-selector{
@@ -13,6 +14,7 @@
     cursor: pointer;
     padding: 6px 12px;
     outline: 0;
+    font-weight: bold;
 }
 
 .cp-selector.opened{
@@ -31,6 +33,9 @@
 
 .cp-drop {
     z-index: 1000;
+    position: absolute;
+    width: 100%;
+    border:1px solid #ccc;
 }
 
 .cp-tab>dl {
@@ -38,6 +43,7 @@
 }
 
 .cp-tab>dl>dd {
+    background: #FFF;
     float: left;
     cursor: pointer;
     margin: -1px 0 0 0;

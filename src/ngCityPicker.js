@@ -1,5 +1,5 @@
 (function(){
-	angular.module('angularCityPicker', [])
+	angular.module('ngCityPicker', [])
     // 省份数据，以区域名称作键
 	.constant('provinceData', [
         {
@@ -3688,11 +3688,11 @@
     })
     // 全局配置
 	.constant('cpConfig', {
-        tabs: [{"name":"省份","url":"provincePanel.html"},
-                {"name":"城市","url":"cityPanel.html"},
-                {"name":"县区","url":"districtPanel.html"}],
-		placeholder: "请选择城市",
-        format:"$0-$1-$2"
+    tabs: [{"name":"省份","url":"provincePanel.html"},
+            {"name":"城市","url":"cityPanel.html"},
+            {"name":"县区","url":"districtPanel.html"}],
+    placeholder: "请选择城市",
+    format:"$0-$1-$2"
 	})
     // 初始化模板
     .run(function($templateCache){
@@ -3770,7 +3770,7 @@
             restrict:'EA',
             templateUrl:'template.html',
             replace:true,
-            require:'?ngModel',
+            require:'ngModel',
             scope:{
                 model:'=ngModel',
                 open:'=',
@@ -3883,6 +3883,7 @@
                          * 目前包括四个不设市辖区的地级市：广东中山、广东东莞、甘肃嘉峪关、海南三亚
                          */
                         if(!this.districtData[id]){
+                            this.clear(2);
                             this.close();
                         }else{
                             this.selectTab(cpConfig.tabs[2]);
@@ -4023,7 +4024,7 @@
                         if(obj.name){
                             if(obj.item){
                                 this.selectItem(obj.item);
-                                this.activeItem(obj.item);  
+                                // this.activeItem(obj.item);
                             }else{
                                 this.clear();
                             }
@@ -4061,25 +4062,18 @@
 
             // 格式化输出selected
             ctrl.print = function(formatTmpl){
-                if(!this.selected.province){
+                var selected = this.selected;
+                if(!selected.province){
                     return ctrl.placeholder;
                 }else{
-                    var result = "";
-                    var selected = this.selected;
-                    var dataset = [['$0',selected.province],['$1',selected.city],['$2',selected.district]];
-
-                    var start;
-                    var end;
-
-                    for (var i = 0; i < dataset.length; i++) {
-                        var data = dataset[i];
-                        start = end || 0;
-                        end = formatTmpl.indexOf(data[0]) + data[0].length;
-                        var tmpl = formatTmpl.substring(start,end);
-                        if(data[1]){
-                            result += tmpl.replace(data[0],data[1][data[1].length-1]);
-                        }
-                    };
+                    var result = formatTmpl.replace('$0',selected.province[2]);
+                    if(selected.city){
+                        result = result.replace('$1',selected.city[1]);
+                    }
+                    if(selected.district){
+                        result = result.replace('$2',selected.district[1]);
+                    }
+                    result = result.replace('$1',"").replace('$2',"");
                     return result;
                 }
             };
@@ -4104,7 +4098,7 @@
              */
             if(ctrl.q){
                 $scope.$watch('q',function(newVal){
-                    ctrl.q = newVal;//need
+                    ctrl.q = newVal;// need
                     ctrl.query(ctrl.q);
                 },true);
             }
@@ -4117,39 +4111,32 @@
              * 当selected对象发生变化时，回传至q对象
              * Chaos Magic Code 2...
              */
-            $scope.$watch('ctrl.selected',function(newVal){
-                var selected = newVal;
+            if(ctrl.q){
+                $scope.$watch('ctrl.selected',function(newVal){
+                    var selected = newVal;
 
-                // ngModal
-                $scope.model = selected;
+                    // ngModal
+                    $scope.model = selected;
 
-                // q
-                if(angular.isString(ctrl.q)){
-                    if(ctrl.isOpen){
-                        $scope.q = selected.city ? selected.city[0] : selected.province[0];
+                    // q
+                    if(angular.isString(ctrl.q)){
+                        if(selected.district){
+                            $scope.q = selected.district[0];
+                        }else if(selected.city){
+                            $scope.q = selected.city[0];
+                        }else if(selected.province){
+                            $scope.q = selected.province[0];
+                        }else{
+                            $scope.q = null;
+                        }
+                    }else{
+                        $scope.q = [];
+                        $scope.q[0] = selected.province ? selected.province[2] : null;
+                        $scope.q[1] = selected.city ? selected.city[1] : null;
+                        $scope.q[2] = selected.district ? selected.district[1] : null;
                     }
-                    $scope.q = selected.district ? selected.district[0] : $scope.q;
-                }else if(angular.isArray(ctrl.q)){                    
-                    if(selected.district){
-                        $scope.q[0] = selected.province[2];
-                        $scope.q[1] = selected.city[1];
-                        $scope.q[2] = selected.district[1];
-                        return;
-                    }
-                    if(selected.city){
-                        $scope.q[0] = selected.province[2];
-                        $scope.q[1] = selected.city[1];
-                        $scope.q[2] = null;
-                        return;
-                    }
-                    if(selected.province){
-                        $scope.q[0] = selected.province[2];
-                        $scope.q[1] = null;
-                        $scope.q[2] = null;
-                        return;
-                    }
-                }
-            },true);
+                },true);
+            }
         }
     ])
 }).call(this);

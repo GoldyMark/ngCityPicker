@@ -8,9 +8,7 @@
 3. http://www.jq22.com/jquery-info632 ，找到的另外一个类似插件供参考选择；
 
 ## Demo:
-
-## 最新版本:
-0.1
+http://goldymark.github.io/ngCityPicker/
 
 ## 许可证:
 Apache License 2.0
@@ -23,12 +21,12 @@ Apache License 2.0
 
 **JS:**
 ```html
-<script src="../dist/angular.js"></script>
+<script src="../lib/angular.min.js"></script>
 <script src="../dist/ngCityPicker.min.js"></script>
 ```
 **CSS:**
 ```css
-<link rel="stylesheet" href="../lib/ngCityPicker.min.css">
+<link rel="stylesheet" href="../dist/ngCityPicker.min.css">
 ```
 
 ## 使用:
@@ -46,7 +44,7 @@ angular.module('myApp', ['ngCityPicker'])
 3、 Controller代码:
 ```javascript
 angular.module('myApp', ['ngCityPicker'])
-.('myController', ['$scope', function($scope){
+.controller('myController', ['$scope', function($scope){
     $scope.params = {
         outputModel:null,
         open:false,
@@ -58,16 +56,19 @@ angular.module('myApp', ['ngCityPicker'])
 
 ## 参数：
 ### [可选][类型:boolean] open:
-####说明：控制ngCityPicker下拉框的打开或关闭；
+#### 说明：控制ngCityPicker下拉框的打开或关闭；
+#### 默认值：false
 <br/>
 
 ### [可选][类型:string] placeholder:
-####说明：默认显示的提示信息；
+#### 说明：默认显示的提示信息；
+#### 默认值：请选择城市
 <br/>
 
 ### [可选][类型:string] format:
 ####说明：格式化选中的城市，$0是省份，$1是城市，$2是县区；
-####示例：
+#### 默认值：$0-$1-$2
+#### 示例：
 ```html
 <mk-city-picker format='$0省-$1市-$2县'></mk-city-picker>
 ```
@@ -75,9 +76,12 @@ angular.module('myApp', ['ngCityPicker'])
 
 ### [可选][类型:**array of string** | **string**] q:
 #### 说明：传入要选择的城市数据；
+#### 默认值：null
+#### 默认格式：**array of string**
 传入数据格式示例（支持数组和字符串）：
 **array**:['广东','广州','天河']——按[省份名称,城市名称,县区名称]的格式传入；
 **string**:"44"，或"4401"，或"440106"——可传入省份、城市或县区对应的代码；
+<br/>
 <br/>
 
 ### [必须][类型:object] ng-model:
