@@ -20,12 +20,12 @@ Apache License 2.0
 
 **JS:**
 ```html
-<script src="../dist/angular.js"></script>
+<script src="../lib/angular.min.js"></script>
 <script src="../dist/ngCityPicker.min.js"></script>
 ```
 **CSS:**
 ```css
-<link rel="stylesheet" href="../lib/ngCityPicker.min.css">
+<link rel="stylesheet" href="../dist/ngCityPicker.min.css">
 ```
 
 ## 使用:
@@ -76,10 +76,11 @@ angular.module('myApp', ['ngCityPicker'])
 ### [可选][类型:**array of string** | **string**] q:
 #### 说明：传入要选择的城市数据；
 #### 默认值：null
-#### 默认格式：array of string
+#### 默认格式：**array of string**
 传入数据格式示例（支持数组和字符串）：
 **array**:['广东','广州','天河']——按[省份名称,城市名称,县区名称]的格式传入；
 **string**:"44"，或"4401"，或"440106"——可传入省份、城市或县区对应的代码；
+<br/>
 <br/>
 
 ### [必须][类型:object] ng-model:

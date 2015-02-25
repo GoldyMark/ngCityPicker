@@ -4075,33 +4075,6 @@
                     }
                     result = result.replace('$1',"").replace('$2',"");
                     return result;
-
-                    // var result = formatTmpl,
-                    //     selected = this.selected,
-                        // dataset = [['$0',selected.province],['$1',selected.city],['$2',selected.district]];
-                        // dataset = [selected.province,selected.city,selected.district];
-                    //     start,
-                    //     end;
-
-                    // result = formatTmpl
-                    //           .replace('$0',this.selected.province[2])
-                    //           .replace('$1',this.selected.city[1])
-                    //           .replace('$2',this.selected.district[1]);
-
-                    // console.log(selected);
-                    // if(new RegExp("(\\$" + i + ")").test(src))
-                    //   result = result.replace(RegExp.$1,arg);
-
-                    // for (var i = 0; i < dataset.length; i++) {
-                    //     var data = dataset[i];
-                    //     start = end || 0;
-                    //     end = formatTmpl.indexOf(data[0]) + data[0].length;
-                    //     var tmpl = formatTmpl.substring(start,end);
-                    //     if(data[1]){
-                    //         result += tmpl.replace(data[0],data[1][data[1].length-1]);
-                    //     }
-                    // };
-                    // return result;
                 }
             };
 
@@ -4156,42 +4129,11 @@
                         }else{
                             $scope.q = null;
                         }
-                        // if(selected.district){
-                        //     $scope.q = selected.district[0];
-                        //     return;
-                        // }
-                        // if(ctrl.isOpen){
-                        //     console.log(newVal)
-                        //     $scope.q = selected.city ? selected.city[0] : selected.province[0];
-                        // }
-                        // if(selected.district){
-                        //     $scope.q = selected.district[0];
-                        // }
-                        // $scope.q = selected.district ? selected.district[0] : $scope.q;
-                    // }else if(angular.isArray(ctrl.q)){
                     }else{
                         $scope.q = [];
                         $scope.q[0] = selected.province ? selected.province[2] : null;
                         $scope.q[1] = selected.city ? selected.city[1] : null;
                         $scope.q[2] = selected.district ? selected.district[1] : null;
-                        // if(selected.district){
-                        //     $scope.q[0] = selected.province[2];
-                        //     $scope.q[1] = selected.city[1];
-                        //     $scope.q[2] = selected.district[1];
-                        //     return;
-                        // }
-                        // if(selected.city){
-                        //     $scope.q[0] = selected.province[2];
-                        //     $scope.q[1] = selected.city[1];
-                        //     $scope.q[2] = null;
-                        //     return;
-                        // }
-                        // if(selected.province){
-                        //     $scope.q[0] = selected.province[2];
-                        //     $scope.q[1] = null;
-                        //     $scope.q[2] = null;
-                        //     return;
-                        // }
                     }
                 },true);
             }
